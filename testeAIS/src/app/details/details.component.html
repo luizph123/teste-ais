@@ -1,0 +1,33 @@
+<div class="container" *ngIf="data | async as data">
+  <div class="col-md-6">
+    <img [src]="url" class="float-left img-fluid rounded" />
+    <p>     {{data}}</p>
+    <h1>    {{url}} </h1>
+  </div>
+  <!-- <div class="col-md-6">
+    <div class="row">
+      <h2>{{ data.name }}</h2>
+    </div>
+    <div class="row">
+      <h3>ID: {{ data.id }}</h3>
+    </div>
+    <div class="row">
+      <div class="row"><h3 class="card-title">Tipos</h3></div>
+      <div class="row" *ngFor="let item of data.types">
+        <span>{{ item }}</span>
+      </div>
+    </div>
+    <div class="row">
+      <div class="row"><h3 class="card-title">Fraquezas</h3></div>
+      <div class="row" *ngFor="let item of data.weaknesses">
+        <span>{{ item.type }}</span>
+      </div>
+    </div>
+    <div class="row">
+      <div class="row"><h3 class="card-title">Ataques:</h3></div>
+      <div class="row" *ngFor="let item of data.attacks">
+        <a (click)="detail(item)"><span>{{ item.name }}</span></a>
+      </div>
+    </div>
+  </div> -->
+</div>
