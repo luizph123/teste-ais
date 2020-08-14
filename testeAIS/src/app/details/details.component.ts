@@ -1,7 +1,7 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Card } from '../utils/models/pokemon';
 import { DataService } from '../utils/services/data.service';
-import { Subscription } from 'rxjs';
+import { tap } from 'rxjs/operators';
 
 @Component({
   selector: 'app-details',
@@ -10,22 +10,19 @@ import { Subscription } from 'rxjs';
 })
 export class DetailsComponent implements OnInit {
   data: Card;
-  url: string = '123'
-  doneData: Subscription;
+  url: string;
 
   constructor(private service: DataService) {
-    
-  }
-
-  ngOnInit(): void {
-    this.onChange()
-  }
-
-  onChange() {
-    this.service.getData().subscribe((res: Card) => {
-      console.log(res)
-      this.data = res;
-      this.url = res.imageUrlHiRes
+    this.service.getData().pipe(
+      tap((res: Card) => {
+        this.url = res.imageUrlHiRes;
+        console.log(this.url, 'RES')
+      })
+    ).subscribe(e => {
+      this.data = e;
+      console.log(e, 'E')
     });
   }
+
+  ngOnInit(): void {}
 }

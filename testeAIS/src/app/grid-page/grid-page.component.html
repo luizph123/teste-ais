@@ -1,26 +1,23 @@
 <div class="container">
-  <div class=" row text-center">
-    <div class="col-md-10"> 
-      <input type="text" [(ngModel)]="pokeSearch">
-    </div>
-    <div class="col-md-2"> 
-      <button type="text" (click)='search()'></button>
-    </div>
-  </div>
-  <div *ngFor="let pokemon of list" class="row">
-    <div class="col-md-3">
-      <a (click)="detail(pokemon)">
-        <div class="card">
-          <img [src]="pokemon.imageUrl" class="card-img-top" />
+    <app-search (searchData)='search($event)' class="w-100 text-center"></app-search>
+  <div class="row">
+    <div *ngFor="let pokemon of list" class="col-sm-3 mb-3 border-0">
+      <button mat-raised-button (click)="detail(pokemon)" class="card-color h-100 w-100">
+          <img [src]="pokemon.imageUrl" class="card-img-top img-height" />
           <div class="card-body">
-            <h5 class="card-title">{{ pokemon.name }}</h5>
-            <span class="card-subtitle">ID: {{ pokemon.id }}</span>
+            <mat-card-title class="card-title row justify-content-center text-wrap">{{
+              pokemon.name
+            }}</mat-card-title>
+            <mat-card-content class="card-subtitle"
+              >ID: {{ pokemon.id }}</mat-card-content
+            >
             <div *ngFor="let type of pokemon.types">
-              <span class="card-subtitle">{{ type }}</span>
+              <mat-card-content class="card-subtitle">{{
+                type
+              }}</mat-card-content>
             </div>
           </div>
-        </div>
-      </a>
+      </button>
     </div>
   </div>
 </div>

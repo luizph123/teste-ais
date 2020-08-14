@@ -11,9 +11,12 @@ import { Router } from '@angular/router';
 })
 export class GridPageComponent implements OnInit {
   list = [];
-  pokeSearch = '';
 
-  constructor(private service: PokemonService, private dataService: DataService, private router: Router) {}
+  constructor(
+    private service: PokemonService,
+    private dataService: DataService,
+    private router: Router
+  ) {}
 
   ngOnInit(): void {
     this.getPokemons();
@@ -21,19 +24,20 @@ export class GridPageComponent implements OnInit {
 
   getPokemons() {
     this.service.getAll().subscribe((res: Pokemon) => {
-      this.list = res.cards;
+      this.list = this.sortPokemon(res)
     });
   }
 
   detail(pokemon: Card) {
     this.router.navigate(['/details']);
-    console.log(pokemon, 'COMP A')
     this.dataService.setData(pokemon);
   }
 
-  search() {
-    this.service.getByName(this.pokeSearch).subscribe((res: Pokemon) => {
-      this.list = res.cards;
-    });
+  search(event: any) {
+    this.list = this.sortPokemon(event)
+  }
+
+  sortPokemon(obj: Pokemon) {
+    return obj.cards.sort((a, b) => a.name.localeCompare(b.name));
   }
 }

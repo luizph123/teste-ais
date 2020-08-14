@@ -1,0 +1,17 @@
+<div class="row text-center mb-4 align-middle pl-4">
+  <mat-form-field class="col-10 float-right">
+    <mat-label class="label-color">Pesquisar pokemon...</mat-label>
+    <input
+      matInput
+      placeholder="Pesquisar pokemon..."
+      [(ngModel)]="pokeSearch"
+      class="w-100"
+      type="search"
+    />
+  </mat-form-field>
+  <div class="col-2">
+    <button mat-mini-fab (click)="search()" class="btn btn-danger">
+      <i class="material-icons align-middle">search</i>
+    </button>
+  </div>
+</div>

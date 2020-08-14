@@ -1,10 +1,11 @@
-<div class="container" *ngIf="data | async as data">
-  <div class="col-md-6">
-    <img [src]="url" class="float-left img-fluid rounded" />
-    <p>     {{data}}</p>
-    <h1>    {{url}} </h1>
+<mat-card>
+  <div class="row">
+    <div class="col-6">
+      <img mat-card-lg-image [src]="url">
+    </div>
   </div>
-  <!-- <div class="col-md-6">
+</mat-card>
+<!-- <div class="col-md-6">
     <div class="row">
       <h2>{{ data.name }}</h2>
     </div>
@@ -30,4 +31,4 @@
       </div>
     </div>
   </div> -->
-</div>
+<!-- </div> -->
